@@ -1,4 +1,5 @@
 <?php
+// import { uuidv4 } from 'uuid';
 require_once("helpers/dbConnection.php");
 
 function get()
@@ -66,4 +67,24 @@ function getUpdatedAgent($agent_code) {
        echo "Error";
        return [];
    }
+}
+
+function newAgent(){
+    $query = conn()->prepare("INSERT INTO agents VALUES ('$_POST[agent_code]',
+    '$_POST[agent_name]',
+    '$_POST[working_area]',
+    $_POST[comission],
+    $_POST[phone_no],
+    '$_POST[country]'
+    )
+    ");
+
+try {
+    $query->execute();
+  echo "Done";
+
+} catch (PDOException $e) {
+   echo "Error";
+   return [];
+}
 }
