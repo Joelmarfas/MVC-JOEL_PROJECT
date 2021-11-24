@@ -77,6 +77,6 @@ function agentCreated() {
   var_dump($_POST);
 
   newAgent();
-  // getAllAgents();
+  getAllAgents();
 
 }
